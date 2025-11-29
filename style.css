@@ -86,9 +86,25 @@ body {
 
 /* profile */
 .profile-wrap { position: relative; width: 260px; height: 260px; margin-left: auto; border-radius: 20px; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg,#0b1220 0%, rgba(255,255,255,0.02) 100%); padding: 16px; border: 1px solid rgba(160,107,255,0.06); }
-.profile-img { width: 220px; height: 220px; object-fit: cover; border-radius: 50%; border: 4px solid rgba(160,107,255,0.12); box-shadow: 0 10px 30px rgba(160,107,255,0.06); }
-.profile-badge { position: absolute; left: 12px; bottom: 12px; background: rgba(0,0,0,0.45); padding: 6px 10px; border-radius: 999px; color: var(--purple-main); font-weight: 700; }
-
+.profile-img {  width: 300px;            /* عرض مناسب لصور البورتريه */
+  height: auto;            /* يحافظ على التناسب */
+  border-radius: 15px;     /* زوايا ناعمة بدل الشكل الدائري */
+  object-fit: cover;       /* يمنع التشوه */
+  border: 3px solid var(--purple-main); /* نفس لون الثيم */
+  box-shadow: 0 0 20px rgba(160,107,255,0.35); /* Glow بنفسجي خفيف */}
+  .profile-badge {
+    position: absolute;
+    right: auto;        /* نقلها لليمين بدل اليسار */
+    left: 50px;         /* إلغاء اليسار */
+    bottom: 12px;       /* تبقى في الأسفل */
+    background: rgba(0,0,0,0.45);
+    padding: 6px 12px;
+    border-radius: 999px;
+    color: var(--purple-main);
+    font-weight: 700;
+    backdrop-filter: blur(6px); /* يعطي تأثير زجاجي جميل */
+  }
+  
 /* grid for skills & projects */
 .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); gap: 18px; }
 .skill-card { background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.005)); padding: 18px; border-radius: 12px; border: 1px solid rgba(160,107,255,0.04); box-shadow: 0 8px 20px var(--shadow); }
