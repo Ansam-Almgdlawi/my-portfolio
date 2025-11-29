@@ -1,81 +1,168 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My Portfolio</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ansam Almgdlawi — Backend Laravel Developer</title>
+  <meta name="description" content="Ansam Almgdlawi — Backend Developer (Laravel). Building clean REST APIs, services & scalable systems." />
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <!-- Loading overlay -->
+  <div id="loader" class="loader">
+    <div class="spinner"></div>
+  </div>
 
-  <nav>
-    <h2 class="logo">My<span>Portfolio</span></h2>
-    <ul>
-      <li><a href="#about">About</a></li>
-      <li><a href="#skills">Skills</a></li>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
+  <nav class="nav">
+    <div class="nav-inner">
+      <h2 class="logo">Ansam<span>Dev</span></h2>
+      <button id="nav-toggle" class="nav-toggle" aria-label="Toggle navigation">☰</button>
+      <ul class="nav-links">
+        <li><a href="#hero">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
   </nav>
 
-  <section class="hero">
-    <div class="hero-text">
-      <h1>Hi, I'm <span>Ansam Almgdlawi</span></h1>
-      <h3>Backend Developer</h3>
-      <p>I love creating modern, responsive and interactive web applications.</p>
-      <a href="#projects" class="btn">View My Work</a>
-    </div>
-    <div class="hero-img">
-      <img src="profile.jpg" alt="Profile Picture">
-    </div>
-  </section>
-
-  <section id="about" class="about">
-    <h2>About Me</h2>
-    <p>
-      I'm a passionate developer specialized in Laravel, HTML, and C++.
-      I enjoy building meaningful projects that make people's lives easier.
-    </p>
-  </section>
-
-  <section id="skills" class="skills">
-    <h2>My Skills</h2>
-    <div class="skills-container">
-      <div class="skill">Laravel</div>
-      <div class="skill">HTML</div>
-      <div class="skill">C++</div>
-      <div class="skill">JavaScript</div>
-      <div class="skill">MySQL</div>
-      <div class="skill">Git</div>
-    </div>
-  </section>
-
-  <section id="projects" class="projects">
-    <h2>Projects</h2>
-    <div class="project-grid">
-      <div class="project-card">
-        <h3>Kanana AlSham Association</h3>
-        <p>Laravel system for volunteer and donation management.</p>
+  <main>
+    <header id="hero" class="hero">
+      <div class="hero-left">
+        <h1 class="anim-heading">Hi, I'm <span>Ansam Almgdlawi</span></h1>
+        <h2 class="sub">Backend Developer — Laravel Specialist</h2>
+        <p class="lead">
+          I build scalable, maintainable backend systems using Laravel, PHP and modern backend practices. I focus on clean code, Service & Repository architecture, and robust REST APIs.
+        </p>
+        <div class="hero-ctas">
+          <a class="btn" href="#projects">View Projects</a>
+          <a class="btn ghost" href="#contact">Contact Me</a>
+        </div>
       </div>
-      <div class="project-card">
-        <h3>Medical Center App</h3>
-        <p>Clinic and pharmacy management built with Laravel & Flutter.</p>
+      <div class="hero-right">
+        <div class="profile-wrap">
+          <img src="profile.jpg" alt="Ansam Almgdlawi" class="profile-img" />
+          <div class="profile-badge">Laravel • Backend</div>
+        </div>
       </div>
-      <div class="project-card">
-        <h3>Spot the Difference Game</h3>
-        <p>C++ game with multiple levels and timer-based difficulty.</p>
+    </header>
+
+    <section id="about" class="section about">
+      <div class="container">
+        <h3 class="section-title">About Me</h3>
+        <p class="section-desc">
+          I am a Backend Developer with strong experience in Laravel 11, PHP and MySQL. I design and implement REST APIs, follow OOP and clean-code principles, and structure projects with Service & Repository architecture. I use Postman and Git for testing and version control, and always prioritize testability and maintainability.
+        </p>
       </div>
+    </section>
+
+    <section id="skills" class="section skills">
+      <div class="container">
+        <h3 class="section-title">Skills</h3>
+        <div class="skills-grid">
+          <div class="skill-card">
+            <h4>Backend</h4>
+            <div class="skill-line" data-percent="95"><span>Laravel</span><div class="bar"><div class="fill"></div></div></div>
+            <div class="skill-line" data-percent="90"><span>PHP</span><div class="bar"><div class="fill"></div></div></div>
+            <div class="skill-line" data-percent="85"><span>MySQL</span><div class="bar"><div class="fill"></div></div></div>
+          </div>
+
+          <div class="skill-card">
+            <h4>Frontend (Basics)</h4>
+            <div class="skill-line" data-percent="75"><span>HTML</span><div class="bar"><div class="fill"></div></div></div>
+            <div class="skill-line" data-percent="70"><span>CSS</span><div class="bar"><div class="fill"></div></div></div>
+            <div class="skill-line" data-percent="65"><span>JavaScript</span><div class="bar"><div class="fill"></div></div></div>
+          </div>
+
+          <div class="skill-card">
+            <h4>Tools & Practices</h4>
+            <div class="skill-line" data-percent="90"><span>Git</span><div class="bar"><div class="fill"></div></div></div>
+            <div class="skill-line" data-percent="85"><span>Postman</span><div class="bar"><div class="fill"></div></div></div>
+            <div class="skill-line" data-percent="80"><span>Vercel (Deployment)</span><div class="bar"><div class="fill"></div></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects" class="section projects">
+      <div class="container">
+        <h3 class="section-title">Projects</h3>
+        <p class="section-desc">Selected backend & fullstack projects. Click repo buttons to view source.</p>
+
+        <div class="project-grid">
+          <article class="project">
+            <h4>Kinana AlSham — Charity Management System</h4>
+            <p class="muted">Laravel system for volunteer and donation management, admin panels and multi-role flows.</p>
+            <p class="tech">Laravel, PHP, MySQL, REST APIs, Git</p>
+            <div class="project-actions">
+              <a href="https://github.com/Ansam-Almgdlawi/kinanaalsham" target="_blank" rel="noopener" class="btn small">View GitHub</a>
+            </div>
+          </article>
+
+          <article class="project">
+            <h4>Educational LMS System</h4>
+            <p class="muted">Learning management features, user roles and course management. Repo hosted on Bitbucket (stage branch).</p>
+            <p class="tech">Laravel, React (frontend), Git, APIs</p>
+            <div class="project-actions">
+              <a href="https://bitbucket.org/ansamalmgdlawi/lmsrepo/src/stage/" target="_blank" rel="noopener" class="btn small">View Bitbucket</a>
+            </div>
+          </article>
+
+          <article class="project">
+            <h4>Pharmacy System (Laravel)</h4>
+            <p class="muted">Pharmacy & inventory management system built with Laravel and modular architecture.</p>
+            <p class="tech">Laravel, MySQL, Composer, Git</p>
+            <div class="project-actions">
+              <a href="https://github.com/Ansam-Almgdlawi/Pharmacyproject" target="_blank" rel="noopener" class="btn small">View GitHub</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="section contact">
+      <div class="container">
+        <h3 class="section-title">Contact Me</h3>
+        <div class="contact-grid">
+          <form id="contactForm" class="contact-form" novalidate>
+            <label>
+              <span>Name</span>
+              <input type="text" name="name" id="name" required />
+            </label>
+            <label>
+              <span>Email</span>
+              <input type="email" name="email" id="email" required />
+            </label>
+            <label>
+              <span>Message</span>
+              <textarea name="message" id="message" rows="5" required></textarea>
+            </label>
+            <div class="form-actions">
+              <button type="submit" class="btn">Send Message</button>
+              <div id="formMsg" class="form-msg" aria-live="polite"></div>
+            </div>
+          </form>
+
+          <div class="contact-info">
+            <h4>Reach out</h4>
+            <p>Email: <a href="mailto:ansamalmgdlawi@gmail.com">ansamalmgdlawi@gmail.com</a></p>
+            <p>GitHub: <a href="https://github.com/Ansam-Almgdlawi" target="_blank">github.com/Ansam-Almgdlawi</a></p>
+            <div class="socials">
+              <!-- Add any social links you want -->
+              <a href="#" aria-label="LinkedIn">LinkedIn</a>
+              <a href="#" aria-label="Twitter">Twitter</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© 2025 Ansam Almgdlawi — Backend Developer. All rights reserved.</p>
     </div>
-  </section>
-
-  <section id="contact" class="contact">
-    <h2>Contact Me</h2>
-    <p>Email: <a href="mailto:youremail@example.com">ansamalmgdlawi@gmail.com</a></p>
-    <p>GitHub: <a href="#" target="_blank">https://github.com/Ansam-Almgdlawi</a></p>
-  </section>
-
-  <footer>
-    <p>© 2025 Ansam | All Rights Reserved</p>
   </footer>
 
   <script src="script.js"></script>
