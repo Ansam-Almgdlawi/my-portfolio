@@ -1,103 +1,120 @@
-/* Basic UI interactions, animations and form validation */
+/* Basic UI interactions, premium animations, and form validation */
 
-// Loader
+// --- Loader ---
 window.addEventListener('load', () => {
   const loader = document.getElementById('loader');
-  if (loader) {
-    setTimeout(() => {
-      loader.classList.add('hidden');
-    }, 450); // short delay for smoother feel
-  }
+  // small delay so spinner shows briefly for polish
+  if (loader) setTimeout(() => { loader.classList.add('hidden'); loader.setAttribute('aria-hidden','true'); }, 450);
 });
 
-// Nav toggle
+// --- Nav toggle (mobile) ---
 const nav = document.querySelector('.nav');
 const navToggle = document.getElementById('nav-toggle');
 const navLinks = document.querySelector('.nav-links');
 
 navToggle && navToggle.addEventListener('click', () => {
   nav.classList.toggle('open');
+  navToggle.setAttribute('aria-expanded', nav.classList.contains('open') ? 'true' : 'false');
 });
 
-// Smooth scroll for internal links (native behavior also works)
-document.querySelectorAll('a[href^="#"]').forEach(a=>{
-  a.addEventListener('click', (e)=>{
+// Close mobile nav on link click
+document.querySelectorAll('.nav-links a').forEach(a => a.addEventListener('click', () => {
+  nav.classList.remove('open');
+}));
+
+// --- Smooth internal links ---
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', (e) => {
     const href = a.getAttribute('href');
-    if (href.length>1) {
+    if (href.length > 1) {
       e.preventDefault();
       const el = document.querySelector(href);
-      if (el) el.scrollIntoView({behavior:'smooth', block:'start'});
-      nav.classList.remove('open');
+      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
   });
 });
 
-// Intersection animations for elements
-const animObserver = new IntersectionObserver((entries)=>{
-  entries.forEach(entry=>{
-    if (entry.isIntersecting) {
-      entry.target.classList.add('inview');
-    }
+// --- Intersection animations (reveal on scroll) ---
+const animObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) entry.target.classList.add('inview');
   });
-},{threshold:0.12});
+}, { threshold: 0.14 });
 
-document.querySelectorAll('.project, .skill-card, .section-title, .anim-heading').forEach(el=>{
-  animObserver.observe(el);
-});
+document.querySelectorAll('.project, .skill-card, .section-title, .anim-heading, .profile-wrap').forEach(el => animObserver.observe(el));
 
-// Skills animation (reads data-percent)
+// --- Skills animation (reads data-percent) ---
 function animateSkillBars() {
-  document.querySelectorAll('.skill-line').forEach(line=>{
+  document.querySelectorAll('.skill-line').forEach(line => {
     const pct = parseInt(line.getAttribute('data-percent') || '0', 10);
     const fill = line.querySelector('.fill');
     if (fill) {
-      // animate width
-      setTimeout(()=> fill.style.width = pct + '%', 250);
+      // stagger animations slightly
+      setTimeout(() => { fill.style.width = pct + '%'; }, 300);
     }
   });
 }
 window.addEventListener('load', animateSkillBars);
 
-// Simple reveal for project cards (adds opacity/translate transitions via CSS)
-const style = document.createElement('style');
-style.innerHTML = `
-  .project, .skill-card, .section-title, .anim-heading { opacity:0; transform: translateY(14px); transition: all 0.8s cubic-bezier(.2,.9,.3,1); }
-  .project.inview, .skill-card.inview, .section-title.inview, .anim-heading.inview{ opacity:1; transform:none; }
-`;
-document.head.appendChild(style);
+// --- Cursor glow effect (follow mouse) ---
+const cursorGlow = document.getElementById('cursor-glow');
+document.addEventListener('mousemove', (e) => {
+  if (!cursorGlow) return;
+  cursorGlow.style.left = e.clientX + 'px';
+  cursorGlow.style.top = e.clientY + 'px';
+  // subtle transform for fluid follow
+  cursorGlow.style.transform = 'translate(-50%, -50%) scale(1)';
+});
 
-// Contact form validation (JS-only)
+// --- Typing effect for subtitle ---
+const typingText = "Backend Laravel Developer";
+let typingIndex = 0;
+function typeLoop() {
+  const el = document.getElementById('typing');
+  if (!el) return;
+  if (typingIndex < typingText.length) {
+    el.textContent += typingText.charAt(typingIndex);
+    typingIndex++;
+    setTimeout(typeLoop, 55);
+  } else {
+    // keep cursor blink style by toggling class if desired
+  }
+}
+window.addEventListener('load', () => setTimeout(typeLoop, 600));
+
+// --- Contact form validation (client-side only) ---
 const form = document.getElementById('contactForm');
 const formMsg = document.getElementById('formMsg');
 
-if(form){
+if (form) {
   form.addEventListener('submit', (e) => {
     e.preventDefault();
     formMsg.textContent = '';
     const name = form.name.value.trim();
     const email = form.email.value.trim();
     const message = form.message.value.trim();
+
     if (!name || !email || !message) {
       formMsg.textContent = 'Please fill in all fields.';
       formMsg.style.color = '#ffbaba';
       return;
     }
-    // basic email regex
+
     const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if(!emailRe.test(email)){
+    if (!emailRe.test(email)) {
       formMsg.textContent = 'Please enter a valid email address.';
       formMsg.style.color = '#ffbaba';
       return;
     }
 
-    // Simulate successful send (client-side only). For actual email you need backend or form service.
+    // Client-only simulation: for production integrate backend or third-party form service.
     formMsg.textContent = 'Message sent! I will get back to you soon.';
-    formMsg.style.color = 'var(--accent)';
+    formMsg.style.color = getComputedStyle(document.documentElement).getPropertyValue('--purple-main') || '#a06bff';
     form.reset();
   });
 }
 
-// Accessibility: allow closing mobile nav on escape
+// --- Accessibility: close nav with Escape ---
 document.addEventListener('keydown', (e) => {
-  if(e.key === 'Escape') nav.classList.remove('open');
+  if (e.key === 'Escape') nav.classList.remove('open');
 });

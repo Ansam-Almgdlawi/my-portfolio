@@ -1,22 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Ansam Almgdlawi — Backend Laravel Developer</title>
   <meta name="description" content="Ansam Almgdlawi — Backend Developer (Laravel). Building clean REST APIs, services & scalable systems." />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <!-- Cursor glow -->
+  <div id="cursor-glow" aria-hidden="true"></div>
+
   <!-- Loading overlay -->
-  <div id="loader" class="loader">
-    <div class="spinner"></div>
+  <div id="loader" class="loader" role="status" aria-hidden="false">
+    <div class="spinner" aria-hidden="true"></div>
   </div>
 
-  <nav class="nav">
+  <nav class="nav" role="navigation" aria-label="Main Navigation">
     <div class="nav-inner">
-      <h2 class="logo">Ansam<span>Dev</span></h2>
-      <button id="nav-toggle" class="nav-toggle" aria-label="Toggle navigation">☰</button>
+      <h1 class="logo">Ansam<span>Dev</span></h1>
+      <button id="nav-toggle" class="nav-toggle" aria-label="Toggle menu">☰</button>
       <ul class="nav-links">
         <li><a href="#hero">Home</a></li>
         <li><a href="#about">About</a></li>
@@ -28,22 +32,25 @@
   </nav>
 
   <main>
-    <header id="hero" class="hero">
-      <div class="hero-left">
-        <h1 class="anim-heading">Hi, I'm <span>Ansam Almgdlawi</span></h1>
-        <h2 class="sub">Backend Developer — Laravel Specialist</h2>
-        <p class="lead">
-          I build scalable, maintainable backend systems using Laravel, PHP and modern backend practices. I focus on clean code, Service & Repository architecture, and robust REST APIs.
-        </p>
-        <div class="hero-ctas">
-          <a class="btn" href="#projects">View Projects</a>
-          <a class="btn ghost" href="#contact">Contact Me</a>
+    <header id="hero" class="hero section">
+      <div class="container hero-inner">
+        <div class="hero-left">
+          <h2 class="anim-heading">Hi, I'm <span>Ansam Almgdlawi</span></h2>
+          <h3 class="sub">Backend Developer — <span id="typing"></span></h3>
+          <p class="lead">
+            I design and build scalable backend systems using Laravel 11 and modern backend practices: clean code, Service & Repository architecture, robust REST APIs and MySQL.
+          </p>
+          <div class="hero-ctas">
+            <a class="btn" href="#projects">View Projects</a>
+            <a class="btn ghost" href="#contact">Contact Me</a>
+          </div>
         </div>
-      </div>
-      <div class="hero-right">
-        <div class="profile-wrap">
-          <img src="profile.jpg" alt="Ansam Almgdlawi" class="profile-img" />
-          <div class="profile-badge">Laravel • Backend</div>
+
+        <div class="hero-right">
+          <div class="profile-wrap">
+            <img src="profile.jpg" alt="Ansam Almgdlawi" class="profile-img" />
+            <div class="profile-badge">Laravel • Backend</div>
+          </div>
         </div>
       </div>
     </header>
@@ -52,7 +59,7 @@
       <div class="container">
         <h3 class="section-title">About Me</h3>
         <p class="section-desc">
-          I am a Backend Developer with strong experience in Laravel 11, PHP and MySQL. I design and implement REST APIs, follow OOP and clean-code principles, and structure projects with Service & Repository architecture. I use Postman and Git for testing and version control, and always prioritize testability and maintainability.
+          I am a Backend Developer experienced with Laravel 11, PHP and MySQL. I build maintainable REST APIs, apply OOP and clean-code principles, and structure projects using Service & Repository architecture. I use Postman and Git for testing and version control, always prioritizing maintainability and testability.
         </p>
       </div>
     </section>
@@ -79,7 +86,7 @@
             <h4>Tools & Practices</h4>
             <div class="skill-line" data-percent="90"><span>Git</span><div class="bar"><div class="fill"></div></div></div>
             <div class="skill-line" data-percent="85"><span>Postman</span><div class="bar"><div class="fill"></div></div></div>
-            <div class="skill-line" data-percent="80"><span>Vercel (Deployment)</span><div class="bar"><div class="fill"></div></div></div>
+            <div class="skill-line" data-percent="80"><span>Vercel</span><div class="bar"><div class="fill"></div></div></div>
           </div>
         </div>
       </div>
@@ -144,16 +151,15 @@
             </div>
           </form>
 
-          <div class="contact-info">
+          <aside class="contact-info">
             <h4>Reach out</h4>
             <p>Email: <a href="mailto:ansamalmgdlawi@gmail.com">ansamalmgdlawi@gmail.com</a></p>
             <p>GitHub: <a href="https://github.com/Ansam-Almgdlawi" target="_blank">github.com/Ansam-Almgdlawi</a></p>
             <div class="socials">
-              <!-- Add any social links you want -->
               <a href="#" aria-label="LinkedIn">LinkedIn</a>
               <a href="#" aria-label="Twitter">Twitter</a>
             </div>
-          </div>
+          </aside>
         </div>
       </div>
     </section>
